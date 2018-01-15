@@ -1,0 +1,18 @@
+body
+{
+    background-color: #eeffee;
+}
+
+div.content
+{
+    width: 400px;
+    background-color: #ccffcc;
+    border: 5px double gray;
+    padding: 10px;
+}
+
+.error
+{
+    color: #ff3333;
+    font-size: large;
+}

@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:body>
+        <ui:composition template="/template.xhtml" >
+            <ui:define name="content">
+                <h2>Login</h2>
+                <h:form>
+                    <h:messages globalOnly="true" layout="table" styleClass="errorMessage" />
+                    <h:panelGrid columns="2">
+                        <p>Username: </p>
+                        <h:panelGroup>
+                            <h:inputText id="uname"
+                                         value="#{user.username}"
+                                         required="true"
+                                         requiredMessage="Please enter your username" />
+                            <h:message for="uname" styleClass="errorMessage" />
+                        </h:panelGroup>
+
+                        <p>Password: </p>
+                        <h:panelGroup>
+                            <h:inputSecret id="pwd"
+                                           value="#{user.password}"
+                                           required="true"
+                                           requiredMessage="Please enter your password" />
+                            <h:message for="pwd" styleClass="errorMessage" />
+                        </h:panelGroup>
+                    </h:panelGrid>
+                    <p><h:commandButton id="loginBtn" type="submit" value="Log in" action="#{user.checkCredentials()}" />
+                    </p>
+                    <p><h:commandButton type="submit" value="Register" action="register" immediate="true" />
+                    </p>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

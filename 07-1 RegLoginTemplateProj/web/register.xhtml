@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:body>
+        <ui:composition template="/template.xhtml" >
+            <ui:define name="content">
+                <h2>Register</h2>
+                <h:form>
+                    <h:messages globalOnly="true" layout="table" styleClass="errorMessage" />
+                    <h:panelGrid columns="2">
+                        <p><b>Your name:</b><br/>(max. 20 characters)</p>
+                        <h:panelGroup>
+                            <h:inputText id="regname"
+                                         value="#{registration.name}"
+                                         maxlength="20" 
+                                         required="true"
+                                         requiredMessage="Please enter your name" />
+                            <h:message for="regname" styleClass="errorMessage" />
+                        </h:panelGroup>
+
+                        <p><b>Username:</b><br/>(max. 20 characters)</p>
+                        <h:panelGroup>
+                            <h:inputText id="uname"
+                                         value="#{registration.username}"
+                                         maxlength="20" 
+                                         required="true"
+                                         requiredMessage="Please enter your username" />
+                            <h:message for="uname" styleClass="errorMessage" />
+                        </h:panelGroup>
+
+                        <p><b>Password:</b><br/>(max. 20 characters)</p>
+                        <h:panelGroup>
+                            <h:inputSecret id="pwd"
+                                           value="#{registration.password1}"
+                                           maxlength="20" 
+                                           required="true"
+                                           requiredMessage="Please enter your password" />
+                            <h:message for="pwd" styleClass="errorMessage" />
+                        </h:panelGroup>
+
+                        <p><b>Confirm password:</b><br/>(max. 20 characters)</p>
+                        <h:panelGroup>
+                            <h:inputSecret id="pwdagain"
+                                           value="#{registration.password2}"
+                                           maxlength="20" 
+                                           required="true"
+                                           requiredMessage="Please confirm your password" />
+                            <h:message for="pwdagain" styleClass="errorMessage" />
+                        </h:panelGroup>
+                    </h:panelGrid>
+                    <p><h:commandButton value="Submit" action="#{registration.register()}" />&nbsp;&nbsp;
+                        <h:commandButton type="reset" value="Reset" />&nbsp;&nbsp;
+                        <h:commandButton type="submit" value="Cancel" action="login" immediate="true" />
+                    </p>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

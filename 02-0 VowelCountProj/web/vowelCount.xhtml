@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Vowel count</title>
+    </h:head>
+    <h:body style="background-color: #abcdef">
+        <h1>Vowel count</h1>
+        <p>You typed: 
+            '<h:outputText value="#{vowelCount.text}" />'
+        </p>
+        <h3>This string</h3>
+        <blockquote>
+            <p>'a': <h:outputText value="#{vowelCount.numberOfA}" /></p>
+            <p>'e': <h:outputText value="#{vowelCount.numberOfE}" /></p>
+            <p>'i': <h:outputText value="#{vowelCount.numberOfI}" /></p>
+            <p>'o': <h:outputText value="#{vowelCount.numberOfO}" /></p>
+            <p>'u': <h:outputText value="#{vowelCount.numberOfU}" /></p>
+        </blockquote>
+        <h3>All strings</h3>
+        <blockquote>
+            <p>'a': <h:outputText value="#{vowelCount.totalA}" /></p>
+            <p>'e': <h:outputText value="#{vowelCount.totalE}" /></p>
+            <p>'i': <h:outputText value="#{vowelCount.totalI}" /></p>
+            <p>'o': <h:outputText value="#{vowelCount.totalO}" /></p>
+            <p>'u': <h:outputText value="#{vowelCount.totalU}" /></p>
+        </blockquote>
+    </h:body>
+</html>
+

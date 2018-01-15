@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>View Previous Orders</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template.xhtml" >
+            <ui:define name="content">
+                <h1>Previous Orders</h1>
+                <h:form>
+                    <h:dataTable value="#{previousOrders.orders}"
+                                 var="orders"
+                                 styleClass="itemTable" 
+                                 headerClass="itemTableHeader"
+                                 rowClasses="itemTableOddRow,itemTableEvenRow">
+                        <h:column>
+                            <f:facet name="header">Order ID</f:facet>
+                            <h:outputText value="#{orders.orderID}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Order Date</f:facet>
+                            <h:outputText value="#{orders.dateOfOrder}" /> <h:outputText value="#{orders.timeOfOrder}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Item ID</f:facet>
+                            <h:outputText value="#{orders.itemID}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Name</f:facet>
+                            <f:facet name="footer">Total Items: #{previousOrders.orderSize}</f:facet>
+                            <h:outputText value="#{orders.itemName}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Quantity</f:facet>
+                            <h:outputText value="#{orders.qty}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Line Total</f:facet>
+                            <h:outputText value="#{orders.total}">
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                            </h:outputText>
+                        </h:column>
+                    </h:dataTable>
+                    <h:commandButton type="submit" value="Back" action="index" />
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Products Shop</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template.xhtml" >
+            <ui:define name="content">
+                <h1>View Products</h1>
+                <h:form>
+                    <h:commandButton value="View Cart" action="viewCart" />
+                    <h:commandButton type="submit" value="Profile" action="profile" />
+                    <h:commandButton type="submit" value="Log Out" action="#{user.logOff()}" />
+                    <p>Item Search: <h:inputText value="#{shop.search}"/><h:commandButton value="Search" action="#{shop.search()}" /></p>
+                    <h:dataTable value="#{shop.itemDTO}"
+                                 var="ItemDTO"
+                                 styleClass="itemTable" 
+                                 headerClass="itemTableHeader"
+                                 rowClasses="itemTableOddRow,itemTableEvenRow">
+                        <h:column>
+                            <f:facet name="header">ID</f:facet>
+                            <h:outputText value="#{ItemDTO.itemID}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Name</f:facet>
+                            <f:facet name="footer">Total: #{shop.totalItems} Products</f:facet>
+                            <h:outputText value="#{ItemDTO.itemName}" />
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Price</f:facet>
+                            <h:outputText value="#{ItemDTO.price}">
+                                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                            </h:outputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Photo</f:facet>
+                            <h:graphicImage value="#{ItemDTO.image}"/>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Quantity</f:facet>
+                            <h:inputText value="#{ItemDTO.qtyReq}" label="Quanitiy"
+                                         converterMessage = "Must be a whole number">
+                                <f:convertNumber type="number"
+                                                 maxIntegerDigits="3"
+                                                 maxFractionDigits="0"/>
+                            </h:inputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">Actions</f:facet>
+                            <h:commandButton value="View Item Details" action="#{idetail.itemDetail(ItemDTO.itemID , shop.storeID)}" />&nbsp;
+                            <h:commandButton value="Add To Cart" action="#{idetail.addToCart(ItemDTO.qtyReq,ItemDTO.itemID,shop.storeID)}" />
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

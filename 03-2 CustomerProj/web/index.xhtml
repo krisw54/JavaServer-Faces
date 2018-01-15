@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Customers</title>
+    </h:head>
+    <h:body style="background-color: #abcdef">
+        <h1>Customers</h1>
+        <h2>Summary</h2>
+        <h:form>
+            <c:forEach items="#{customer.customerSummaries}" var="cust">
+                <p>
+                    <h:outputText value="#{cust}" />
+                    <h:commandButton value="View details" action="#{customer.fetchCustomerDetails(cust.substring(0, cust.indexOf(':')))}" />
+                </p>
+            </c:forEach>
+        </h:form>
+        <h2>Details</h2>
+        <h:outputText value="#{customer.customerDetails}" />
+    </h:body>
+</html>
+

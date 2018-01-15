@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>SQL injection example</title>
+    </h:head>
+    <h:body>
+        <h1>SQL injection example</h1>
+        <h:form>
+            <p>Enter a username: 
+                <h:inputText value="#{userUnprotected.name}" /> </p>
+                <p>Try: Graham</p>
+                <p>Try: Graham' or 'a' = 'a</p>
+                <h:commandButton type="submit" 
+                                 value="Find postcode" 
+                                 action="#{userUnprotected.findPostcode()}" />
+            <p>Postcode: 
+                <h:outputText value="#{userUnprotected.postcode}" /> </p>
+        </h:form>
+    </h:body>
+</html>
+
